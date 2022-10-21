@@ -72,6 +72,8 @@ containerPrincipale.appendChild(counter);  // appendo il counter al body
         time=  setTimeout(() => {
             raffica = setInterval(aggiungi,30)
         }, 2000);
+
+
     };
 
   
@@ -80,6 +82,7 @@ let aggiungi =function() {   // funzione che serve per incrementare di 1 il valo
 
    contatore++ ;  // incrementa il contatore di 1
    paragrafo.innerHTML = contatore;   // stampa il valore del contatore sullo schermo
+ 
 }
 
 
@@ -94,8 +97,11 @@ let aggiungi =function() {   // funzione che serve per incrementare di 1 il valo
     }
    
     // Aggiungo gli eventi mousedown e mouseup con le relative funzioni
-        pulsanteAggiungi.addEventListener('mousedown',ripetiAggiungi);  
-        document.addEventListener('mouseup',stoppa) 
+        
+        pulsanteAggiungi.addEventListener('touchstart',ripetiAggiungi);  
+        document.addEventListener('touchend',stoppa)
+
+
         /* come elemento ho seleziona document. perchè prevenire il mouseup fuori il Div del pulsante
     
 
@@ -140,8 +146,8 @@ maggiore di 0 per non andare in negativo.
     
  
    
-        pulsanteSottrai.addEventListener('mousedown',ripetiSottrai);
-        document.addEventListener('mouseup',stoppa);
+        pulsanteSottrai.addEventListener('touchstart',ripetiSottrai);
+        document.addEventListener('touchend',stoppa);
     
 
 
