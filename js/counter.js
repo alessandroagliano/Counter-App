@@ -98,8 +98,8 @@ let aggiungi =function() {   // funzione che serve per incrementare di 1 il valo
    
     // Aggiungo gli eventi mousedown e mouseup con le relative funzioni
         
-        pulsanteAggiungi.addEventListener('touchstart',ripetiAggiungi);  
-        document.addEventListener('touchend',stoppa)
+        pulsanteAggiungi.addEventListener('pointerdown',ripetiAggiungi);  
+        document.addEventListener('pointerup',stoppa)
 
 
         /* come elemento ho seleziona document. perchè prevenire il mouseup fuori il Div del pulsante
@@ -146,8 +146,8 @@ maggiore di 0 per non andare in negativo.
     
  
    
-        pulsanteSottrai.addEventListener('touchstart',ripetiSottrai);
-        document.addEventListener('touchend',stoppa);
+        pulsanteSottrai.addEventListener('pointerdown',ripetiSottrai);
+        document.addEventListener('pointerup',stoppa);
     
 
 
