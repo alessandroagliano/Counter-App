@@ -150,7 +150,9 @@ maggiore di 0 per non andare in negativo.
    
         pulsanteSottrai.addEventListener('pointerdown',ripetiSottrai);
         document.addEventListener('pointerup',stoppa);
-       
+        pulsanteSottrai.addEventListener('touchstart' , ()=> {
+            return false;
+        })
 
 
 
