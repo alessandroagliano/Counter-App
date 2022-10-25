@@ -82,6 +82,11 @@ body {
     background-color: rgb(235, 235, 235) ;
     color:   rgb(22, 22, 22);
 }
+
+.dbl-click-zoom {
+    touch-action: manipulation;
+}
+
 .schermo {
     height: 200px;
     font-size: 150px;

@@ -46,6 +46,7 @@ containerPrincipale.appendChild(counter);  // appendo il counter al body
     /* pulsante aggiungi */
     var pulsanteAggiungi= document.createElement("div");  // creo il div del pulsanti
     pulsanteAggiungi.classList.add("pulsanti")   // aggiungo la classe ''pulsanti ''
+    pulsanteAggiungi.classList.add("dbl-click-zoom");
     var tastoAggiungi = document.createTextNode("+");  // creo il nodo di testo che inserirò nel div
     pulsanteAggiungi.appendChild(tastoAggiungi); // appendo il testo creato per creare il pulsanti '' Aggiungi''
 
@@ -73,7 +74,6 @@ containerPrincipale.appendChild(counter);  // appendo il counter al body
             raffica = setInterval(aggiungi,30)
         }, 2000);
         return false;
-
     };
 
   
@@ -117,7 +117,8 @@ let aggiungi =function() {   // funzione che serve per incrementare di 1 il valo
    quindi al click sottraggo */
 
     var pulsanteSottrai= document.createElement("div");
-    pulsanteSottrai.classList.add("pulsanti")
+    pulsanteSottrai.classList.add("pulsanti");
+    pulsanteAggiungi.classList.add("dbl-click-zoom");
     var tastoSottrai = document.createTextNode("-");
     pulsanteSottrai.appendChild(tastoSottrai);
 
