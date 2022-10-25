@@ -100,8 +100,9 @@ let aggiungi =function() {   // funzione che serve per incrementare di 1 il valo
         
         pulsanteAggiungi.addEventListener('pointerdown',ripetiAggiungi);  
         pulsanteAggiungi.addEventListener('pointerup',stoppa)
-        pulsanteAggiungi.addEventListener('contextmenu', event => event.preventDefault());
-
+        pulsanteAggiungi.addEventListener('touchstart' , ()=> {
+            return false;
+        })
 
         /* come elemento ho seleziona document. perchè prevenire il mouseup fuori il Div del pulsante
     
@@ -149,8 +150,9 @@ maggiore di 0 per non andare in negativo.
    
         pulsanteSottrai.addEventListener('pointerdown',ripetiSottrai);
         document.addEventListener('pointerup',stoppa);
-        pulsanteSottrai.addEventListener('contextmenu', event => event.preventDefault());
-    
+        pulsanteSottrai.addEventListener('touchstart' , ()=> {
+            return false;
+        })
 
 
 
