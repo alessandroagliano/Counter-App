@@ -73,9 +73,6 @@ containerPrincipale.appendChild(counter);  // appendo il counter al body
         time=  setTimeout(() => {
             raffica = setInterval(aggiungi,30)
         }, 2000);
-
-        event.preventDefault();
-        return false;
     };
 
   
@@ -128,12 +125,11 @@ let aggiungi =function() {   // funzione che serve per incrementare di 1 il valo
 
 
 
-    function ripetiSottrai(event) {
+    function ripetiSottrai() {
         sottrai();
         time=  setTimeout(() => {
             raffica = setInterval(sottrai,30)
         }, 2000);
-        event.preventDefault();
     };
 
   
