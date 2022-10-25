@@ -55,7 +55,7 @@ body {
     aspect-ratio: 1 / 1;
 
     box-shadow: 5px 5px 3px  rgb(34, 34, 34); /* ombra sui pulsanti */
-    
+    touch-action: manipulation;
 }
 
 .pulsanti,
@@ -83,9 +83,7 @@ body {
     color:   rgb(22, 22, 22);
 }
 
-.dbl-click-zoom {
-    touch-action: manipulation;
-}
+
 
 .schermo {
     height: 200px;
