@@ -99,7 +99,7 @@ let aggiungi =function() {   // funzione che serve per incrementare di 1 il valo
     // Aggiungo gli eventi mousedown e mouseup con le relative funzioni
         
         pulsanteAggiungi.addEventListener('pointerdown',ripetiAggiungi);  
-        pulsanteAggiungi.addEventListener('pointerleave',stoppa)
+        pulsanteAggiungi.addEventListener('pointerup',stoppa)
         pulsanteAggiungi.addEventListener('contextmenu', event => event.preventDefault());
 
 
