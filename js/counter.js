@@ -68,11 +68,13 @@ containerPrincipale.appendChild(counter);  // appendo il counter al body
         poi con setTimeout faccio partire il contatore dopo 2 secondi grazie all'uso di setTimeout 
         che usa SetInterval per incrementare il contatore velocemente();
         */
-    function ripetiAggiungi() {   
+    function ripetiAggiungi(event) {   
         aggiungi();
         time=  setTimeout(() => {
             raffica = setInterval(aggiungi,30)
         }, 2000);
+
+        event.preventDefault();
         return false;
     };
 
@@ -118,7 +120,7 @@ let aggiungi =function() {   // funzione che serve per incrementare di 1 il valo
 
     var pulsanteSottrai= document.createElement("div");
     pulsanteSottrai.classList.add("pulsanti");
-    pulsanteAggiungi.classList.add("dbl-click-zoom");
+    pulsanteSottrai.classList.add("dbl-click-zoom");
     var tastoSottrai = document.createTextNode("-");
     pulsanteSottrai.appendChild(tastoSottrai);
 
@@ -126,11 +128,12 @@ let aggiungi =function() {   // funzione che serve per incrementare di 1 il valo
 
 
 
-    function ripetiSottrai() {
+    function ripetiSottrai(event) {
         sottrai();
         time=  setTimeout(() => {
             raffica = setInterval(sottrai,30)
         }, 2000);
+        event.preventDefault();
     };
 
   
@@ -213,8 +216,6 @@ let cambiatutto = function() {
     }
 } 
 }
-
-
 
 
 bottone.addEventListener("click" , cambioColore3);
