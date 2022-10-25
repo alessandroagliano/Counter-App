@@ -38,7 +38,7 @@ Elenca le funzionalità pronte qui:
 
 ## Screenshot
  
-
+<img src="img/counter.png">
 Screenshoot della’applicazione al suo valore iniziale
 
 
