@@ -1,6 +1,6 @@
 # Counter App
 > Applicazione di un Contatore con possibilità di incrementare,diminuire,resettare il valore e cambiare il colore dell’interfaccia
-> Demo dal vivo [_qui_](https://www.example.com). <!-- Se hai il progetto ospitato da qualche parte, includi il link qui. -->
+> Demo dal vivo [_qui_](https://counter-agliano.netlify.app/). <!-- Se hai il progetto ospitato da qualche parte, includi il link qui. -->
 
 ## Sommario
 * [Informazioni generali](#informazioni-generali)
@@ -11,7 +11,7 @@
 * [Stato progetto](#stato-progetto)
 * [Ringraziamenti](#riconoscimenti)
 * [Contatto](#contatto)
-<!-- * [Licenza](#licenza) -->
+* [Licenza](#licenza)
 
 
 ## Informazioni generali
@@ -58,7 +58,7 @@ Il progetto è completato.
 Questo progetto è stato svolto per Start2Impact per valutare le mie skills Javascript.
 
 ## Contatto
-Creato da [Alessandro Aglianò](https://www.flynerd.pl/)  ==inserire github pages== - non esitare a contattarmi!
+Creato da [Alessandro Aglianò](https://alessandroagliano.github.io/)- non esitare a contattarmi!
 
 ## Licenza -->
 Questo progetto è open source e disponibile sotto la Mit License.
