@@ -210,12 +210,10 @@ let cambiatutto = function() {
 
 bottone.addEventListener("click" , cambioColore3);
 
-
 let divRiconoscimenti = document.createElement('div');
 divRiconoscimenti.classList.add('riconoscimenti');
 let paragrafoRisconoscimenti = document.createElement('p');
-let riconoscimenti = document.createTextNode('Prodotto da Alessandro Aglianò');
-paragrafoRisconoscimenti.appendChild(riconoscimenti);
+ paragrafoRisconoscimenti.innerHTML = 'Prodotto da <a href="https://alessandroagliano.github.io/">Alessandro Aglianò</a>';
 divRiconoscimenti.appendChild(paragrafoRisconoscimenti);
 
     // Appendo i vari pulsanti , in ordine, sul div genitore
