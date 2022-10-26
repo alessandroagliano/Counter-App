@@ -63,7 +63,7 @@ containerPrincipale.appendChild(counter);
      -appendo il testo creato per creare il pulsanti '' Aggiungi''
     */
     
-    var pulsanteAggiungi= document.createElement("div");            
+    var pulsanteAggiungi= document.createElement("button");            
     pulsanteAggiungi.classList.add("pulsanti")                     
     var tastoAggiungi = document.createTextNode("+");                
     pulsanteAggiungi.appendChild(tastoAggiungi);     
