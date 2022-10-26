@@ -89,7 +89,7 @@ body {
     height: 120px;
     justify-content: space-around;
     align-items: center;
-    
+    touch-action: manipulation;
     
 }
 
