@@ -18,6 +18,7 @@ let counter = document.createElement('div');
 counter.classList.add('container-principale');          
 containerPrincipale.appendChild(counter);                
 
+
     /* TitoloCounter
     
     ripeto lo stesso procedimento per il Title */
@@ -29,6 +30,7 @@ containerPrincipale.appendChild(counter);
 
    
    counter.appendChild(divtitle); /* inserimento del titlesul div del counter*/
+
 
 
    /* ---- Schermo contatore----
@@ -55,22 +57,23 @@ containerPrincipale.appendChild(counter);
 
 
     /* ---------------PULSANTE AGGIUNGI -------------
-     creo il div del pulsanti
-    aggiungo la classe ''pulsanti ''
-    creo il nodo di testo che inserirò nel div
-     appendo il testo creato per creare il pulsanti '' Aggiungi''
+     -creo il div del pulsante
+     -aggiungo la classe ''pulsanti''
+     -creo il nodo di testo che inserirò nel div
+     -appendo il testo creato per creare il pulsanti '' Aggiungi''
     */
     
     var pulsanteAggiungi= document.createElement("div");            
     pulsanteAggiungi.classList.add("pulsanti")                     
     var tastoAggiungi = document.createTextNode("+");                
-    pulsanteAggiungi.appendChild(tastoAggiungi);                   
+    pulsanteAggiungi.appendChild(tastoAggiungi);     
+
  
   //--------------- funzionamento Pulsante aggiungi --------------
 
   /*  Ad ogni click del mouse il contatore incrementa di uno
   se il pulsante resta premuto il contatore aumenta velocemente fino a quando non rilascio il pulsante
-  Tutto questo l'ho realizzato grazie al SetTimeout , al setIntervale e agli eventi mousedown e mouseup. */  
+  Tutto questo l'ho realizzato grazie al SetTimeout , al setInterval e agli eventi pointerdown,pointerup e pointermove*/  
       
         let contatore = 0
         let time;
@@ -79,7 +82,7 @@ containerPrincipale.appendChild(counter);
         /* con questa funzione  faccio incrementare il contatore di 1 richiamando la funzione
         aggiungi(); 
         poi con setTimeout faccio partire il contatore dopo 2 secondi grazie all'uso di setTimeout 
-        che usa SetInterval per incrementare il contatore velocemente();  */
+        che usa SetInterval per incrementarlo velocemente();  */
 
     function loopAggiungi() {   
         aggiungi();
@@ -127,10 +130,6 @@ let aggiungi =function() {                    // funzione che serve per incremen
     var tastoSottrai = document.createTextNode("-");
     pulsanteSottrai.appendChild(tastoSottrai);
 
-    
-
-
-
     function loopSottrai() {
         sottrai();
         time=  setTimeout(() => {
@@ -138,13 +137,9 @@ let aggiungi =function() {                    // funzione che serve per incremen
         }, 2000);
     };
 
-  
-/* Per la funzione sottrai() ho soltanto messo la condizione che il valore del contatore dev'essere
-maggiore di 0 per non andare in negativo.
-*/
     let sottrai= function (){
   
-        if (contatore > 0) {
+        if (contatore > 0) {      // contatore > 0 in modo che non risulti mai negativo
             contatore--;   
         }
         paragrafo.innerHTML = contatore; 
@@ -179,9 +174,9 @@ maggiore di 0 per non andare in negativo.
 
     reset.addEventListener('click' , azzera);
 
+
+
     //---------------BOTTONE CAMBIO COLORE --------------
-
-
 
     let bottone = document.createElement('div');
     bottone.classList.add('pulsanti');
