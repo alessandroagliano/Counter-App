@@ -43,7 +43,7 @@ body {
     aspect-ratio: 1 / 1;
 
     box-shadow: 5px 5px 3px  rgb(34, 34, 34); /* ombra sui pulsanti */
-    touch-action: manipulation !important ; /* disabilito il db click per ingrandire */
+    touch-action: none !important ; /* disabilito il db click per ingrandire */
 
     /* disabilito selezione del testo sui pulsanti
     utile per quando tengo premuto su mobile */
@@ -52,8 +52,7 @@ body {
 	-khtml-user-select: none; 
 	-moz-user-select: none; 
 	-ms-user-select: none; 
-	user-select: none; 
-    
+	user-select: none;  
 }
 
 .pulsanti,
