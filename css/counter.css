@@ -46,7 +46,7 @@ body {
      /* disabilito il db click per ingrandire */
 
     /* disabilito selezione del testo sui pulsanti */
-    -webkit-touch-callout: none; 
+     
 	-webkit-user-select: none; 
 	-khtml-user-select: none; 
 	-moz-user-select: none; 
