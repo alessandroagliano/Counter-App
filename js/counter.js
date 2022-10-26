@@ -63,7 +63,7 @@ containerPrincipale.appendChild(counter);
      -appendo il testo creato per creare il pulsanti '' Aggiungi''
     */
     
-    var pulsanteAggiungi= document.createElement("button");            
+    var pulsanteAggiungi= document.createElement("div");            
     pulsanteAggiungi.classList.add("pulsanti")                     
     var tastoAggiungi = document.createTextNode("+");                
     pulsanteAggiungi.appendChild(tastoAggiungi);     
@@ -125,7 +125,7 @@ let aggiungi =function() {                    // funzione che serve per incremen
    Per il pulsante sottrai ho seguito il ragionamento inverso del pulsante aggiungi
    quindi al click sottraggo */
 
-    var pulsanteSottrai= document.createElement("button");
+    var pulsanteSottrai= document.createElement("div");
     pulsanteSottrai.classList.add("pulsanti");
     var tastoSottrai = document.createTextNode("-");
     pulsanteSottrai.appendChild(tastoSottrai);
@@ -155,7 +155,7 @@ let aggiungi =function() {                    // funzione che serve per incremen
    
 
 
-    let reset = document.createElement('button');
+    let reset = document.createElement('div');
     reset.classList.add('pulsanti');
     let testoReset = document.createTextNode('Reset');
     reset.appendChild(testoReset);
@@ -178,7 +178,7 @@ let aggiungi =function() {                    // funzione che serve per incremen
 
     //---------------BOTTONE CAMBIO COLORE --------------
 
-    let bottone = document.createElement('button');
+    let bottone = document.createElement('div');
     bottone.classList.add('pulsanti');
     let testoColore = document.createTextNode('Mode');
     bottone.appendChild(testoColore);
