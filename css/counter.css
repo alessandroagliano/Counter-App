@@ -47,11 +47,6 @@ body {
 
     /* disabilito selezione del testo sui pulsanti */
      
-	-webkit-user-select: none; 
-	-khtml-user-select: none; 
-	-moz-user-select: none; 
-	-ms-user-select: none; 
-	user-select: none; 
 }
 
 .pulsanti,
