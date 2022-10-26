@@ -1,7 +1,6 @@
 body {
     background-color: rgb(22, 22, 22)!Important;
-    color: rgb(235, 235, 235)!important;
-    
+    color: rgb(235, 235, 235)!important; 
 }
 
 
@@ -44,7 +43,7 @@ body {
     aspect-ratio: 1 / 1;
 
     box-shadow: 5px 5px 3px  rgb(34, 34, 34); /* ombra sui pulsanti */
-    touch-action: manipulation !important; /* disabilito il db click per ingrandire */
+     /* disabilito il db click per ingrandire */
 
     /* disabilito selezione del testo sui pulsanti */
     -webkit-touch-callout: none; 
@@ -90,7 +89,7 @@ body {
     height: 120px;
     justify-content: space-around;
     align-items: center;
-    touch-action: manipulation;
+    
     
 }
 
