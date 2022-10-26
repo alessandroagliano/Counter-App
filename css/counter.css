@@ -46,7 +46,12 @@ body {
      /* disabilito il db click per ingrandire */
 
     /* disabilito selezione del testo sui pulsanti */
-     
+    -webkit-touch-callout: none; 
+	-webkit-user-select: none; 
+	-khtml-user-select: none; 
+	-moz-user-select: none; 
+	-ms-user-select: none; 
+	user-select: none; 
 }
 
 .pulsanti,
@@ -84,7 +89,7 @@ body {
     height: 120px;
     justify-content: space-around;
     align-items: center;
-    touch-action: manipulation;
+    touch-action: none;
     
 }
 
