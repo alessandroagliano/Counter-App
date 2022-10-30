@@ -142,12 +142,12 @@ resetButton.appendChild(textResetButton);
     do al contatore il valore 0 e lo stampo con innerHTML.
     Successivamente collego al click la funzion 'stopLoop()'  */
 
-const reset = function () {
+const resetCounter = function () {
   valueOfCounter = 0; // do al contatore il valore 0
   display.innerHTML = valueOfCounter; // lo stampo
 };
 
-resetButton.addEventListener("click", reset);
+resetButton.addEventListener("click", resetCounter);
 
 //---------------BOTTONE CAMBIO COLORE --------------
 
