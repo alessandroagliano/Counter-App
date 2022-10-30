@@ -9,7 +9,7 @@ body.appendChild(mainContainer);
 
 Creo dinamicamente il div del counter
 Aggiungo la classe 'counter'al div counter
-Appendo il counter al body 
+Appendo il counter al mainContainer
 */
 
 const counter = document.createElement("div");
@@ -26,7 +26,7 @@ const titleName = document.createTextNode("Counter");
 // lo appendo al div
 title.appendChild(titleName);
 
-/* inserimento del title sul div del counter*/
+//inserimento del title sul div del counter
 counter.appendChild(title);
 
 /* ---- Schermo contatore----
