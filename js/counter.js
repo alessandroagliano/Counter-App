@@ -1,11 +1,9 @@
-
-
-
-let corpo = document.body;
-let containerPrincipale = document.createElement('div');
-containerPrincipale.classList.add('contatore')
-containerPrincipale.classList.add('container-fluid')
-corpo.appendChild(containerPrincipale)
+const body = document.body;
+body.classList.add("primary-color");
+const mainContainer = document.createElement("div");
+mainContainer.classList.add("main-container");
+mainContainer.classList.add("container-fluid");
+body.appendChild(mainContainer);
 
 /* -------------- div del counter -----------
 
@@ -14,211 +12,179 @@ Aggiungo la classe container-principale al div counter
 // appendo il counter al body 
 */
 
-let counter = document.createElement('div');              
-counter.classList.add('container-principale');          
-containerPrincipale.appendChild(counter);                
+const counter = document.createElement("div");
+counter.classList.add("counter");
+mainContainer.appendChild(counter);
 
-
-    /* TitoloCounter
+/* TitoloCounter
     
     ripeto lo stesso procedimento per il Title */
-    let divtitle= document.createElement("div");         
-    divtitle.classList.add('title');                     
-   let title= document.createTextNode("Counter");        
+const title = document.createElement("div");
+title.classList.add("title");
+const titleName = document.createTextNode("Counter");
 
-   divtitle.appendChild(title);    // lo appendo al div 
+// lo appendo al div
+title.appendChild(titleName);
 
-   
-   counter.appendChild(divtitle); /* inserimento del titlesul div del counter*/
+/* inserimento del title sul div del counter*/
+counter.appendChild(title);
 
-
-
-   /* ---- Schermo contatore----
+/* ---- Schermo contatore----
    anche qui creo tutto dinamicamente e stampo il valore iniziale di 0
    */
-    var paragrafo= document.createElement("div");              
-    paragrafo.classList.add("schermo") ;                    
-    paragrafo.innerHTML= ' 0 ';                             
-    
-   counter.appendChild(paragrafo);          /* inserimento del div dello schermo sul div del counter*/
+const display = document.createElement("div");
+display.classList.add("display");
+display.innerHTML = " 0 ";
 
-
+/* inserimento del div dello schermo sul div del counter*/
+counter.appendChild(display);
 
 //--------------------- CONTAINER PER I PULSANTI ----------------------------
 
- 
+/* container pulsanti */
+const buttonContainer = document.createElement("div");
+buttonContainer.classList.add("button-container");
 
-    /* container pulsanti */
-    var containerPulsanti= document.createElement("div");
-    containerPulsanti.classList.add("restoCounter")
+/* appendo il div dei Pulsanti al div del Counter */
+counter.appendChild(buttonContainer);
 
-    
-   counter.appendChild(containerPulsanti);                 /* appendo il div dei Pulsanti al div del Counter */
-
-
-    /* ---------------PULSANTE AGGIUNGI -------------
+/* ---------------PULSANTE AGGIUNGI -------------
      -creo il div del pulsante
      -aggiungo la classe ''pulsanti''
      -creo il nodo di testo che inserirò nel div
      -appendo il testo creato per creare il pulsanti '' Aggiungi''
     */
-    
-    var pulsanteAggiungi= document.createElement("div");            
-    pulsanteAggiungi.classList.add("pulsanti")                     
-    var tastoAggiungi = document.createTextNode("+");                
-    pulsanteAggiungi.appendChild(tastoAggiungi);     
 
- 
-  //--------------- funzionamento Pulsante aggiungi --------------
+const addButton = document.createElement("div");
+addButton.classList.add("button");
+const textAddButton = document.createTextNode("+");
+addButton.appendChild(textAddButton);
 
-  /*  Ad ogni click del mouse il contatore incrementa di uno
+//--------------- funzionamento Pulsante aggiungi --------------
+
+/*  Ad ogni click del mouse il contatore incrementa di uno
   se il pulsante resta premuto il contatore aumenta velocemente fino a quando non rilascio il pulsante
-  Tutto questo l'ho realizzato grazie al SetTimeout , al setInterval e agli eventi pointerdown,pointerup e pointermove*/  
-      
-        let contatore = 0
-        let time;
-        let raffica;
+  Tutto questo l'ho realizzato grazie al SetTimeout , al setInterval e agli eventi pointerdown,pointerup e pointermove*/
 
-        /* con questa funzione  faccio incrementare il contatore di 1 richiamando la funzione
+let contatore = 0;
+let time;
+let raffica;
+
+/* con questa funzione  faccio incrementare il contatore di 1 richiamando la funzione
         aggiungi(); 
         poi con setTimeout faccio partire il contatore dopo 2 secondi grazie all'uso di setTimeout 
         che usa SetInterval per incrementarlo velocemente();  */
 
-    function loopAggiungi() {   
-        aggiungi();
-        time=  setTimeout(() => {
-            raffica = setInterval(aggiungi,30)
-        }, 2000);
-    };
+const loopAddCounterValue = function () {
+  addCounterValue();
+  time = setTimeout(() => {
+    raffica = setInterval(addCounterValue, 30);
+  }, 2000);
+};
 
-  
+// funzione che serve per incrementare di 1 il valore del contatore
+const addCounterValue = function () {
+  contatore += 1; // incrementa il contatore di 1
+  display.innerHTML = contatore; // stampa il valore del contatore sullo schermo
+};
 
-let aggiungi =function() {                    // funzione che serve per incrementare di 1 il valore del contatore 
+// con la funzione stoppa() faccio fermare il contatore  tramite il clearTimeout e clearInterval
 
-   contatore++ ;                              // incrementa il contatore di 1
-   paragrafo.innerHTML = contatore;             // stampa il valore del contatore sullo schermo
- 
-}
+const stopLoop = function () {
+  clearTimeout(time);
+  clearInterval(raffica);
+};
 
+// Aggiungo gli eventi pointerdown, pointerup e pointerout con le relative funzioni
 
-    // con la funzione stoppa() faccio fermare il contatore  tramite il clearTimeout e clearInterval
+addButton.addEventListener("pointerdown", loopAddCounterValue);
+addButton.addEventListener("pointerup", stopLoop);
+addButton.addEventListener("pointerout", stopLoop);
 
-    let stoppa = function (){
-        
-        clearTimeout(time)
-        clearInterval(raffica);
-    }
-   
-    // Aggiungo gli eventi pointerdown, pointerup e pointerout con le relative funzioni
-        
-        pulsanteAggiungi.addEventListener('pointerdown',loopAggiungi);  
-        pulsanteAggiungi.addEventListener('pointerup',stoppa);
-        pulsanteAggiungi.addEventListener('pointerout',stoppa);
+//----------------------- PULSANTE SOTTRAI --------------------//
 
-
-
-        //----------------------- PULSANTE SOTTRAI --------------------//
-
-
-
-   /*
+/*
    Per il pulsante sottrai ho seguito il ragionamento inverso del pulsante aggiungi
    quindi al click sottraggo */
 
-    var pulsanteSottrai= document.createElement("div");
-    pulsanteSottrai.classList.add("pulsanti");
-    var tastoSottrai = document.createTextNode("-");
-    pulsanteSottrai.appendChild(tastoSottrai);
+const decreaseButton = document.createElement("div");
+decreaseButton.classList.add("button");
+const textDecreaseButton = document.createTextNode("-");
+decreaseButton.appendChild(textDecreaseButton);
 
-    function loopSottrai() {
-        sottrai();
-        time=  setTimeout(() => {
-            raffica = setInterval(sottrai,30)
-        }, 2000);
-    };
+const loopDecreaseCounterValue = function () {
+  decreaseCounterValue();
+  time = setTimeout(() => {
+    raffica = setInterval(decreaseCounterValue, 30);
+  }, 2000);
+};
 
-    let sottrai= function (){
-  
-        if (contatore > 0) {      // contatore > 0 in modo che non risulti mai negativo
-            contatore--;   
-        }
-        paragrafo.innerHTML = contatore; 
-    }
+const decreaseCounterValue = function () {
+  if (contatore > 0) {
+    // contatore > 0 in modo che non risulti mai negativo
+    contatore -= 1;
+  }
+  display.innerHTML = contatore;
+};
 
-        pulsanteSottrai.addEventListener('pointerdown',loopSottrai);
-        pulsanteSottrai.addEventListener('pointerup',stoppa);
-        pulsanteSottrai.addEventListener('pointerout',stoppa);
+decreaseButton.addEventListener("pointerdown", loopDecreaseCounterValue);
+decreaseButton.addEventListener("pointerup", stopLoop);
+decreaseButton.addEventListener("pointerout", stopLoop);
 
+//----------------------- PULSANTE RESET --------------------//
 
+const resetButton = document.createElement("div");
+resetButton.classList.add("button");
+const textResetButton = document.createTextNode("Reset");
+resetButton.appendChild(textResetButton);
 
- //----------------------- PULSANTE RESET --------------------//
-   
-
-
-    let reset = document.createElement('div');
-    reset.classList.add('pulsanti');
-    let testoReset = document.createTextNode('Reset');
-    reset.appendChild(testoReset);
-
-   
-    
-
-    /* con la funziona azzera() resetto il valore del contatore 
+/* con la funziona azzera() resetto il valore del contatore 
     do al contatore il valore 0 e lo stampo con innerHTML.
     Successivamente collego al click la funziona 'azzera()'  */
 
-    function azzera (){
-        contatore = 0;   // do al contatore il valore 0
-        paragrafo.innerHTML = contatore; // lo stampo
-       }
+const reset = function () {
+  contatore = 0; // do al contatore il valore 0
+  display.innerHTML = contatore; // lo stampo
+};
 
-    reset.addEventListener('click' , azzera);
+resetButton.addEventListener("click", reset);
 
+//---------------BOTTONE CAMBIO COLORE --------------
 
-
-    //---------------BOTTONE CAMBIO COLORE --------------
-
-    let bottone = document.createElement('div');
-    bottone.classList.add('pulsanti');
-    let testoColore = document.createTextNode('Mode');
-    bottone.appendChild(testoColore);
-
+const modeButton = document.createElement("div");
+modeButton.classList.add("button");
+const textModeButton = document.createTextNode("Mode");
+modeButton.appendChild(textModeButton);
 
 /* al bottone imposto una if che dice: se la classe del body(corpo) è 'body' , la rimuovi e 
 imposti la classe' colore-secondario' altrimenti rimuovi quella presente e aggiungi la classe
 .body ( la principale).
 tutto questo ad ogni click sul bottone*/
 
-
-    function cambioColore () {
-        if(corpo.className == "body") {
-            corpo.classList.remove('body');
-            corpo.classList.add('colore-secondario'); 
-        } else  {corpo.classList.remove('colore-secondario')
-    corpo.classList.add('body'); 
-} 
+function changeColor() {
+  if (body.className == "primary-color") {
+    body.classList.remove("primary-color");
+    body.classList.add("secondary-color");
+  } else {
+    body.classList.remove("secondary-color");
+    body.classList.add("primary-color");
+  }
 }
 
-
-bottone.addEventListener("click" , cambioColore);
+modeButton.addEventListener("click", changeColor);
 
 //----------------------- RICONOSCIMENTI  --------------------//
 
-let divRiconoscimenti = document.createElement('div');
-divRiconoscimenti.classList.add('riconoscimenti');
-let paragrafoRisconoscimenti = document.createElement('p');
- paragrafoRisconoscimenti.innerHTML = 'Prodotto da <a href="https://alessandroagliano.github.io/">Alessandro Aglianò</a>';
-divRiconoscimenti.appendChild(paragrafoRisconoscimenti);
+const divOfRecognition = document.createElement("div");
+divOfRecognition.classList.add("recognition");
+const recognitionParagraph = document.createElement("p");
+recognitionParagraph.innerHTML =
+  'Produced by <a href="https://alessandroagliano.github.io/">Alessandro Aglianò</a>';
+divOfRecognition.appendChild(recognitionParagraph);
 
-    // Appendo i vari pulsanti , in ordine, sul div genitore
-    containerPulsanti.appendChild(pulsanteAggiungi);
-    containerPulsanti.appendChild(reset);
-    containerPulsanti.appendChild(pulsanteSottrai);
-    containerPulsanti.appendChild(bottone);
-    counter.appendChild(divRiconoscimenti);
-
-
-
-
-
-
+// Appendo i vari pulsanti , in ordine, sul div genitore
+buttonContainer.appendChild(addButton);
+buttonContainer.appendChild(resetButton);
+buttonContainer.appendChild(decreaseButton);
+buttonContainer.appendChild(modeButton);
+counter.appendChild(divOfRecognition);
