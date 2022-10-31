@@ -19,6 +19,7 @@ mainContainer.appendChild(counter);
 /* TitoloCounter
     
     ripeto lo stesso procedimento per il Title */
+
 const title = document.createElement("div");
 title.classList.add("title");
 const titleName = document.createTextNode("Counter");
@@ -49,7 +50,7 @@ buttonContainer.classList.add("button-container");
 counter.appendChild(buttonContainer);
 
 /* ---------------PULSANTE AGGIUNGI -------------
-     -creo il div del Bottone
+     -creo il div del Bottone Aggiungi
      -aggiungo la classe ''button''
      -creo il nodo di testo che inserirò nel div
      -appendo il testo creato per creare il pulsante 'addButton'
@@ -64,7 +65,7 @@ addButton.appendChild(textAddButton);
 
 /*  Ad ogni click del mouse il contatore incrementa di uno
   se il bottone resta premuto il contatore aumenta velocemente fino a quando non rilascio il pulsante
-  Tutto questo l'ho realizzato grazie al SetTimeout , al setInterval e agli eventi pointerdown,pointerup e pointermove*/
+  Tutto questo l'ho realizzato grazie al SetTimeout , al setInterval e agli eventi pointerdown,pointerup e pointerout*/
 
 let valueOfCounter = 0;
 let time;
@@ -75,7 +76,7 @@ let loop;
         poi con setTimeout faccio partire il contatore dopo 2 secondi grazie all'uso di setTimeout 
         che usa SetInterval per incrementarlo velocemente();  */
 
-const loopAdd = function loopToAddCounterValue() {
+const loopAdd = function loopOfAddCounterValue() {
   addCounterValue();
   time = setTimeout(() => {
     loop = setInterval(addCounterValue, 30);
@@ -112,7 +113,7 @@ decreaseButton.classList.add("button");
 const textDecreaseButton = document.createTextNode("-");
 decreaseButton.appendChild(textDecreaseButton);
 
-const loopDecrease = function loopToDecreaseCounterValue() {
+const loopDecrease = function loopOfDecreaseCounterValue() {
   decreaseCounterValue();
   time = setTimeout(() => {
     loop = setInterval(decreaseCounterValue, 30);
@@ -144,7 +145,7 @@ resetButton.appendChild(textResetButton);
 
 const resetCounter = function () {
   valueOfCounter = 0; // do al contatore il valore 0
-  display.innerHTML = valueOfCounter; // lo stampo
+  display.innerHTML = valueOfCounter; // lo stampo sul display
 };
 
 resetButton.addEventListener("click", resetCounter);
@@ -156,9 +157,9 @@ modeButton.classList.add("button");
 const textModeButton = document.createTextNode("Mode");
 modeButton.appendChild(textModeButton);
 
-/* al bottone imposto una if che dice: se la classe del body è 'primary-color' , la rimuovi e 
-imposti la classe 'secondary-color' altrimenti rimuovi quella presente e aggiungi la classe
-'.primary-color'.
+/* al bottone imposto una if che dice: 
+se la classe del body è 'primary-color' , la rimuovi e imposti la classe 'secondary-color' 
+altrimenti rimuovi quella presente e aggiungi la classe'.primary-color'.
 tutto questo ad ogni click sul bottone*/
 
 function changeColor() {
