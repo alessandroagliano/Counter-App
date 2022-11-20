@@ -1,80 +1,50 @@
 const body = document.body;
 body.classList.add("primary-color");
-const mainContainer = document.createElement("div");
-mainContainer.classList.add("main-container");
+
+// FUNZIONE PER CREARE ELEMENTI DEL DOM
+/* Funzione per creare dinamicamente ogni elemento del Counter
+accetta 3 parametri: 
+Il tagname dell'elemento
+La classe da associare
+Il div wrapper dove appendere l'elemento creato
+Il testo dell'elemento */
+
+function createElement(tagname, classe, genitore, text) {
+  tagname = document.createElement(tagname);
+  tagname.classList.add(classe);
+  genitore.appendChild(tagname);
+  text = text || ""; // il valore vuoto è per evitare la scritta 'undefined'
+  var text = (tagname.innerHTML = text);
+  return tagname;
+}
+
+const mainContainer = createElement("div", "main-container", body); // CONTENITORE PRINCIPALE
 mainContainer.classList.add("container-fluid");
-body.appendChild(mainContainer);
 
-/* -------------- div del counter -----------
-
-Creo dinamicamente il div del counter
-Aggiungo la classe 'counter'al div counter
-Appendo il counter al mainContainer
-*/
-
-const counter = document.createElement("div");
-counter.classList.add("counter");
-mainContainer.appendChild(counter);
-
-/* TitoloCounter
-    
-    ripeto lo stesso procedimento per il Title */
-
-const title = document.createElement("div");
-title.classList.add("title");
-const titleName = document.createTextNode("Counter");
-
-// lo appendo al div
-title.appendChild(titleName);
-
-//inserimento del title sul div del counter
-counter.appendChild(title);
-
-/* ---- Schermo contatore----
-   anche qui creo tutto dinamicamente e stampo il valore iniziale di 0 */
-
-const display = document.createElement("div");
-display.classList.add("display");
-display.innerHTML = " 0 ";
-
-/* inserimento del div del display sul div del counter*/
-counter.appendChild(display);
-
-//--------------------- CONTAINER PER I BOTTONI ----------------------------
-
-/* container bottoni */
-const buttonContainer = document.createElement("div");
-buttonContainer.classList.add("button-container");
-
-/* appendo il div dei bottoni al div del Counter */
-counter.appendChild(buttonContainer);
-
-/* ---------------PULSANTE AGGIUNGI -------------
-     -creo il div del Bottone Aggiungi
-     -aggiungo la classe ''button''
-     -creo il nodo di testo che inserirò nel div
-     -appendo il testo creato per creare il pulsante 'addButton'
-    */
-
-const addButton = document.createElement("div");
-addButton.classList.add("button");
-const textAddButton = document.createTextNode("+");
-addButton.appendChild(textAddButton);
-
-//--------------- funzionamento Add Button --------------
-
-/*  Ad ogni click del mouse il contatore incrementa di uno
-  se il bottone resta premuto il contatore aumenta velocemente fino a quando non rilascio il pulsante
-  Tutto questo l'ho realizzato grazie al SetTimeout , al setInterval e agli eventi pointerdown,pointerup e pointerout*/
+const counter = createElement("div", "counter", mainContainer); // DIV COUNTER
+const title = createElement("div", "title", counter, "Counter"); //  Titolo Counter
+const display = createElement("div", "display", counter, "0"); // Display del contatore
+const buttonContainer = createElement("div", "button-container", counter); //CONTAINER PER I BOTTONI
+const addButton = createElement("div", "button", buttonContainer, "+"); // Bottone Aggiungi
+const resetButton = createElement("div", "button", buttonContainer, "Reset"); // Bottone Reset
+const decreaseButton = createElement("div", "button", buttonContainer, "-"); // Bottone Sottrai
+const modeButton = createElement("div", "button", buttonContainer, "Mode"); // Bottone Mode
+const divOfRecognition = createElement(
+  //RICONOSCIMENTI
+  "div",
+  "recognition",
+  counter,
+  'Produced by <a href="https://alessandroagliano.github.io/">Alessandro Aglianò</a>'
+);
+// ------------------------- FUNZIONI ----------------------
 
 let valueOfCounter = 0;
 let time;
 let loop;
-
 /* con questa funzione  faccio incrementare il contatore di 1 richiamando la funzione
         addCounterValue(); 
-        poi con setTimeout faccio partire il contatore dopo 2 secondi grazie all'uso di setTimeout 
-        che usa SetInterval per incrementarlo velocemente();  */
+        poi con setTimeout faccio partire in loop la funzione 'addCounterValue ' dopo 1,5 secondi grazie all'uso di setTimeout 
+        che usa SetInterval;  */
 
 const loopAdd = function loopOfAddCounterValue() {
   addCounterValue();
@@ -89,29 +59,9 @@ const addCounterValue = function () {
   display.innerHTML = valueOfCounter; // stampa il valore del contatore sul display
 };
 
-// con la funzione stopLoop() faccio fermare il contatore  tramite il clearTimeout e clearInterval
-
-const stopLoop = function () {
-  clearTimeout(time);
-  clearInterval(loop);
-};
-
-// Aggiungo gli eventi pointerdown, pointerup e pointerout con le relative funzioni
-
-addButton.addEventListener("pointerdown", loopAdd);
-addButton.addEventListener("pointerup", stopLoop);
-addButton.addEventListener("pointerout", stopLoop);
-
-//----------------------- PULSANTE SOTTRAI --------------------//
-
 /*
-   Per il pulsante 'decrease Button ' ho seguito il ragionamento inverso del pulsante 'Add Button
+   Per il pulsante 'decreaseButton ' ho seguito il ragionamento inverso del pulsante 'AddButton
    quindi al click sottraggo */
-
-const decreaseButton = document.createElement("div");
-decreaseButton.classList.add("button");
-const textDecreaseButton = document.createTextNode("-");
-decreaseButton.appendChild(textDecreaseButton);
 
 const loopDecrease = function loopOfDecreaseCounterValue() {
   decreaseCounterValue();
@@ -128,38 +78,25 @@ const decreaseCounterValue = function () {
   display.innerHTML = valueOfCounter;
 };
 
-decreaseButton.addEventListener("pointerdown", loopDecrease);
-decreaseButton.addEventListener("pointerup", stopLoop);
-decreaseButton.addEventListener("pointerout", stopLoop);
+//FUNZIONE STOP LOOP
+// con la funzione stopLoop() faccio fermare il loop del contatore  tramite il clearTimeout e clearInterval
 
-//----------------------- PULSANTE RESET --------------------//
+const stopLoop = function () {
+  clearTimeout(time);
+  clearInterval(loop);
+};
 
-const resetButton = document.createElement("div");
-resetButton.classList.add("button");
-const textResetButton = document.createTextNode("Reset");
-resetButton.appendChild(textResetButton);
-
-/* con la funziona stopLoop() resetto il valore del contatore 
-    do al contatore il valore 0 e lo stampo con innerHTML.
-    Successivamente collego al click la funzion 'stopLoop()'  */
-
+// FUNZIONE PER IL RESET
 const resetCounter = function () {
   valueOfCounter = 0; // do al contatore il valore 0
   display.innerHTML = valueOfCounter; // lo stampo sul display
 };
 
-resetButton.addEventListener("click", resetCounter);
-
-//---------------BOTTONE CAMBIO COLORE --------------
-
-const modeButton = document.createElement("div");
-modeButton.classList.add("button");
-const textModeButton = document.createTextNode("Mode");
-modeButton.appendChild(textModeButton);
+// FUNZIONE CAMBIO COLORE
 
 /* al bottone imposto una if che dice: 
 se la classe del body è 'primary-color' , la rimuovi e imposti la classe 'secondary-color' 
-altrimenti rimuovi quella presente e aggiungi la classe'.primary-color'.
+altrimenti rimuovi quella presente e aggiungi la classe 'primary-color'.
 tutto questo ad ogni click sul bottone*/
 
 function changeColor() {
@@ -172,20 +109,43 @@ function changeColor() {
   }
 }
 
-modeButton.addEventListener("click", changeColor);
+// FUNZIONI DA AGGIUNGERE ALL'EVENT LISTENER
 
-//----------------------- RICONOSCIMENTI  --------------------//
+/* clickButton function = questa funzione , in base all'elemento selezionato
+resetta il contatore o cambia la color dell'applicazione*/
 
-const divOfRecognition = document.createElement("div");
-divOfRecognition.classList.add("recognition");
-const recognitionParagraph = document.createElement("p");
-recognitionParagraph.innerHTML =
-  'Produced by <a href="https://alessandroagliano.github.io/">Alessandro Aglianò</a>';
-divOfRecognition.appendChild(recognitionParagraph);
+const clickButton = function (event) {
+  if (event.target == resetButton) {
+    resetCounter();
+  } else if (event.target == modeButton) {
+    changeColor();
+  }
+};
 
-// Appendo i vari pulsanti , in ordine, sul div genitore
-buttonContainer.appendChild(addButton);
-buttonContainer.appendChild(resetButton);
-buttonContainer.appendChild(decreaseButton);
-buttonContainer.appendChild(modeButton);
-counter.appendChild(divOfRecognition);
+/* pointerDownButton = questa funzione, sempre in base all'elemento selezionato,
+aumenta o diminuisce il valore del contatore*/
+const pointerDownButton = function (event) {
+  if (event.target == addButton) {
+    loopAdd();
+  } else if (event.target == decreaseButton) {
+    loopDecrease();
+  }
+};
+// pointerOutButton function = questa funzione attiverà la funzione 'stopLoop'
+const pointerUpButton = function (event) {
+  if (event.target == addButton || event.target == decreaseButton) {
+    stopLoop();
+  }
+};
+// pointerOutButton function = questa funzione attiverà la funzione 'stopLoop'
+
+const pointerOutButton = function (event) {
+  if (event.target == addButton || event.target == decreaseButton) {
+    stopLoop();
+  }
+};
+
+buttonContainer.addEventListener("click", clickButton);
+buttonContainer.addEventListener("pointerdown", pointerDownButton);
+buttonContainer.addEventListener("pointerup", pointerUpButton);
+buttonContainer.addEventListener("pointerout", pointerOutButton);
